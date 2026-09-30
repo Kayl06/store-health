@@ -97,6 +97,10 @@ describe("parseStoreUrl", () => {
     );
   });
 
+  it.todo(
+    "blocks hostnames that resolve to private IPs, e.g. 127.0.0.1.nip.io (needs DNS resolution at fetch time; Phase 2 SSRF protection)",
+  );
+
   it("explains why an input was rejected", () => {
     const result = parseStoreUrl("http://my-store.com");
     expect(result).toEqual({ ok: false, reason: expect.stringMatching(/https/i) });
