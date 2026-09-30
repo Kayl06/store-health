@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { app } from "./app.js";
+import { createApp } from "./app.ts";
 
 describe("GET /health", () => {
   it("returns ok", async () => {
+    const app = createApp({ fetch: globalThis.fetch });
     const res = await app.request("/health");
 
     expect(res.status).toBe(200);
