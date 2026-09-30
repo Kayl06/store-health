@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseStoreUrl } from "./store-url.js";
+import { parseStoreUrl } from "./store-url.ts";
 
 function expectOrigin(input: string, origin: string) {
   expect(parseStoreUrl(input)).toEqual({ ok: true, origin });

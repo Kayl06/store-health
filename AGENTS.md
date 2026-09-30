@@ -19,7 +19,7 @@ Before calling a task done, run `pnpm lint && pnpm typecheck && pnpm test` and r
 ## Conventions
 - TypeScript strict everywhere. No `any`; use `unknown` and narrow.
 - Validate every external input (request bodies, params, query strings, env vars, crawled content) with zod at the boundary.
-- In `apps/api` and `packages/shared`, relative imports use the `.js` extension (NodeNext resolution): `import { app } from "./app.js"`.
+- In `apps/api` and `packages/shared`, relative imports use the real `.ts` extension: `import { createApp } from "./app.ts"`. Don't use `.js`: Next.js (Turbopack) can't resolve `.js` to `.ts` inside `packages/shared`, so the web app fails to build even though API tests pass.
 - API route tests call `app.request(...)` directly; no running server needed.
 - Tests live next to the code as `*.test.ts`.
 - Write or update tests first when changing behavior; stop and show them before implementing if asked.
